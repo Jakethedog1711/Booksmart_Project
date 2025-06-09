@@ -1,0 +1,490 @@
+/* assets/css/admin_style.css */
+
+/* Import Google Font - Rubik (from your original CSS) */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+/* Root variables (from your original CSS, adapted to Bootstrap colors where possible) */
+:root {
+    --purple: #8e44ad; /* Custom purple */
+    --red: #c0392b;   /* Custom red */
+    --orange: #f39c12; /* Custom orange */
+    --black: #333;    /* Dark text */
+    --white: #fff;    /* White background */
+    --light-color: #666; /* Lighter text */
+    --light-white: #ccc; /* Light grey */
+    --light-bg: #f5f5f5; /* Very light background */
+    --border: .1rem solid var(--black); /* Thin black border */
+    --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1); /* Soft shadow */
+
+    /* Bootstrap color mapping for consistency */
+    --bs-primary: #007bff; /* Equivalent to Bootstrap primary */
+    --bs-success: #28a745; /* Equivalent to Bootstrap success */
+    --bs-info: #17a2b8;   /* Equivalent to Bootstrap info */
+    --bs-warning: #ffc107; /* Equivalent to Bootstrap warning */
+    --bs-danger: #dc3545; /* Equivalent to Bootstrap danger */
+    --bs-secondary: #6c757d; /* Equivalent to Bootstrap secondary */
+}
+
+/* Universal styles (from your original CSS) */
+* {
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+*::selection {
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+*::-webkit-scrollbar {
+    height: .5rem;
+    width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--purple);
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    overflow-x: hidden;
+}
+
+/* General body styling for admin */
+body {
+    background-color: var(--light-bg);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--black);
+}
+
+/* Admin Header */
+.header {
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.header .flex .logo {
+    font-size: 2.5rem;
+    color: var(--black);
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.header .flex .logo span {
+    color: var(--purple);
+}
+
+.header .flex .navbar a {
+    margin: 0 1rem;
+    font-size: 2rem;
+    color: var(--light-color);
+    text-decoration: none;
+}
+
+.header .flex .navbar a:hover {
+    color: var(--purple);
+}
+
+.header .flex .icons div {
+    font-size: 2.5rem;
+    color: var(--black);
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.header .flex .icons div:hover {
+    color: var(--purple);
+}
+
+#menu-btn {
+    display: none; /* Hidden by default, shown on smaller screens */
+}
+
+.header .flex .account-box {
+    position: absolute;
+    top: 120%;
+    right: 2rem;
+    background-color: var(--white);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    padding: 1.5rem;
+    text-align: center;
+    width: 25rem;
+    display: none;
+    animation: fadeIn .2s linear;
+}
+
+.header .flex .account-box.active {
+    display: block;
+}
+
+.header .flex .account-box p {
+    font-size: 2rem;
+    color: var(--light-color);
+    margin-bottom: 1rem;
+}
+
+.header .flex .account-box p span {
+    color: var(--purple);
+}
+
+.header .flex .account-box .delete-btn {
+    margin-top: 1rem;
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: translateY(-1rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+}
+
+/* Dashboard Section */
+.dashboard .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.dashboard .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    border: var(--border);
+}
+
+.dashboard .box-container .box h3 {
+    font-size: 5rem;
+    color: var(--black);
+}
+
+.dashboard .box-container .box p {
+    font-size: 2rem;
+    color: var(--light-color);
+    padding-top: 1rem;
+}
+
+/* Add Products Section */
+.add-products form {
+    background-color: var(--white);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    padding: 2rem;
+    text-align: center;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+.add-products form h3 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.add-products form .box {
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.7rem;
+    color: var(--black);
+    border: var(--border);
+    margin: 1rem 0;
+    border-radius: .5rem;
+}
+
+.add-products form textarea {
+    height: 15rem;
+    resize: none;
+}
+
+/* Show Products Section */
+.show-products .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.show-products .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    border: var(--border);
+    position: relative;
+}
+
+.show-products .box-container .box img {
+    height: 20rem;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.show-products .box-container .box .name {
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+
+.show-products .box-container .box .price {
+    font-size: 2.5rem;
+    color: var(--purple);
+    margin-bottom: 1rem;
+}
+
+.show-products .box-container .box .qty {
+    width: 6rem;
+    padding: 1rem;
+    border: var(--border);
+    font-size: 1.8rem;
+    color: var(--black);
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+}
+
+.show-products .box-container .box .delete-btn {
+    margin-top: 0;
+}
+
+/* Edit Product Form */
+.edit-product-form {
+    min-height: 100vh;
+    background-color: rgba(0,0,0,.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100%;
+}
+
+.edit-product-form form {
+    background-color: var(--white);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    padding: 2rem;
+    text-align: center;
+    width: 50rem;
+    margin: 0 auto;
+}
+
+.edit-product-form form img {
+    height: 20rem;
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.edit-product-form form .box {
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.7rem;
+    color: var(--black);
+    border: var(--border);
+    margin: 1rem 0;
+    border-radius: .5rem;
+}
+
+/* Users Section */
+.users .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.users .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+}
+
+.users .box-container .box p {
+    padding-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--light-color);
+    line-height: 1.5;
+}
+
+.users .box-container .box p span {
+    color: var(--purple);
+}
+
+.users .box-container .box .delete-btn {
+    margin-top: 0;
+}
+
+/* Messages Section */
+.messages .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.messages .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+}
+
+.messages .box-container .box p {
+    padding-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--light-color);
+    line-height: 1.5;
+}
+
+.messages .box-container .box p span {
+    color: var(--purple);
+}
+
+.messages .box-container .box .delete-btn {
+    margin-top: 0;
+}
+
+/* Orders Section (Admin) */
+.orders .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+.orders .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+}
+
+.orders .box-container .box p {
+    padding-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--light-color);
+}
+
+.orders .box-container .box p span {
+    color: var(--purple);
+}
+
+.orders .box-container .box .option-btn {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.orders .box-container .box .delete-btn {
+    margin-top: 0;
+}
+
+/* Media Queries (from your original CSS, adapted for Bootstrap breakpoints) */
+@media (max-width:991px) { /* Equivalent to Bootstrap's lg breakpoint */
+    html {
+        font-size: 55%;
+    }
+    .header {
+        padding: 1.5rem 2rem;
+    }
+}
+
+@media (max-width:768px) { /* Equivalent to Bootstrap's md breakpoint */
+    #menu-btn {
+        display: inline-block;
+    }
+
+    .header .flex .navbar {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        border-top: var(--border);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path .2s linear;
+    }
+
+    .header .flex .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .header .flex .navbar a {
+        display: block;
+        margin: 2rem;
+        text-align: center;
+    }
+}
+
+@media (max-width:450px) { /* Equivalent to Bootstrap's sm breakpoint */
+    html {
+        font-size: 50%;
+    }
+    .title {
+        font-size: 3rem;
+    }
+    .dashboard .box-container {
+        grid-template-columns: 1fr; /* Stack columns on small screens */
+    }
+    .add-products form,
+    .edit-product-form form,
+    .users .box-container .box,
+    .messages .box-container .box,
+    .orders .box-container .box {
+        width: 100%;
+        margin: 0;
+    }
+}

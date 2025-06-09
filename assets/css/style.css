@@ -1,0 +1,843 @@
+/* assets/css/style.css */
+
+/* Import Google Font - Rubik (from your original CSS) */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+/* Root variables (from your original CSS, adapted to Bootstrap colors where possible) */
+:root {
+    --purple: #8e44ad; /* Custom purple */
+    --red: #c0392b;   /* Custom red */
+    --orange: #f39c12; /* Custom orange */
+    --black: #333;    /* Dark text */
+    --white: #fff;    /* White background */
+    --light-color: #666; /* Lighter text */
+    --light-white: #ccc; /* Light grey */
+    --light-bg: #f5f5f5; /* Very light background */
+    --border: .1rem solid var(--black); /* Thin black border */
+    --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1); /* Soft shadow */
+
+    /* Bootstrap color mapping for consistency */
+    --bs-primary: #007bff; /* Equivalent to Bootstrap primary */
+    --bs-success: #28a745; /* Equivalent to Bootstrap success */
+    --bs-info: #17a2b8;   /* Equivalent to Bootstrap info */
+    --bs-warning: #ffc107; /* Equivalent to Bootstrap warning */
+    --bs-danger: #dc3545; /* Equivalent to Bootstrap danger */
+    --bs-secondary: #6c757d; /* Equivalent to Bootstrap secondary */
+}
+
+/* Universal styles (from your original CSS) */
+* {
+    font-family: 'Rubik', sans-serif; /* Use Rubik font */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+*::selection {
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+*::-webkit-scrollbar {
+    height: .5rem;
+    width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--purple);
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px, for easier rem calculations */
+    overflow-x: hidden;
+}
+
+/* General body styling (adapted for Bootstrap layout) */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures footer sticks to bottom */
+    background-color: var(--light-bg); /* Use light background variable */
+    font-size: 1.6rem; /* Base font size for readability */
+    line-height: 1.6;
+    color: var(--black);
+}
+
+main {
+    flex: 1; /* Main content takes up available space */
+}
+
+/* Headings and Titles */
+.heading {
+    min-height: 20rem;
+    background-color: var(--black); /* Dark background for heading */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 3rem; /* Add some space below heading */
+}
+
+.heading h3 {
+    font-size: 5rem;
+    text-transform: uppercase;
+}
+
+.heading p {
+    font-size: 2.5rem;
+}
+
+.heading p a {
+    color: var(--purple);
+    text-decoration: underline;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    color: var(--black);
+    font-size: 4rem;
+}
+
+/* Buttons (adapted from your original CSS, using Bootstrap classes) */
+.btn {
+    display: inline-block;
+    background-color: var(--purple);
+    color: var(--white);
+    font-size: 1.7rem;
+    padding: 1.2rem 3rem;
+    cursor: pointer;
+    text-transform: capitalize;
+    border-radius: .5rem; /* Rounded corners */
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--black);
+    color: var(--white); /* Ensure text color remains white on hover */
+}
+
+.white-btn {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.white-btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.option-btn {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+.option-btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.delete-btn {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.delete-btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+
+/* Messages (from your original header.php, now handled by Bootstrap alerts) */
+/* The PHP will generate Bootstrap alerts, so these custom styles might be less needed
+   unless you want to override Bootstrap's default alert appearance. */
+.message {
+    position: sticky;
+    top: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: var(--light-white);
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10000;
+    gap: 1.5rem;
+    border-radius: .5rem;
+}
+
+.message span {
+    font-size: 2rem;
+    color: var(--black);
+}
+
+.message i {
+    font-size: 2.5rem;
+    color: var(--red);
+    cursor: pointer;
+}
+
+.message i:hover {
+    color: var(--black);
+}
+
+/* Header Sections (adapted for Bootstrap) */
+.header .header-1 {
+    background-color: var(--black);
+    padding: 1.5rem 9%;
+    color: var(--white);
+}
+
+.header .header-1 .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.header .header-1 .flex .share a {
+    font-size: 2rem;
+    color: var(--white);
+    margin: 0 1rem;
+}
+
+.header .header-1 .flex .share a:hover {
+    color: var(--purple);
+}
+
+.header .header-1 .flex p {
+    font-size: 1.7rem;
+}
+
+.header .header-1 .flex p a {
+    color: var(--purple);
+    text-decoration: underline;
+}
+
+.header .header-2 {
+    background-color: var(--white);
+    padding: 2rem 9%;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.header .header-2.active {
+    box-shadow: var(--box-shadow);
+}
+
+.header .header-2 .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.header .header-2 .flex .logo {
+    font-size: 2.5rem;
+    color: var(--black);
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.header .header-2 .flex .logo span {
+    color: var(--purple);
+}
+
+.header .header-2 .flex .navbar a {
+    margin: 0 1rem;
+    font-size: 2rem;
+    color: var(--light-color);
+    text-decoration: none;
+}
+
+.header .header-2 .flex .navbar a:hover {
+    color: var(--purple);
+}
+
+.header .header-2 .flex .icons div,
+.header .header-2 .flex .icons a {
+    font-size: 2.5rem;
+    color: var(--black);
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.header .header-2 .flex .icons div:hover,
+.header .header-2 .flex .icons a:hover {
+    color: var(--purple);
+}
+
+#menu-btn {
+    display: none; /* Hidden by default, shown on smaller screens by media query */
+}
+
+.header .header-2 .flex .user-box {
+    position: absolute;
+    top: 115%;
+    right: 2rem;
+    background-color: var(--white);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    padding: 1.5rem;
+    text-align: center;
+    width: 25rem;
+    display: none;
+    animation: fadeIn .2s linear;
+}
+
+.header .header-2 .flex .user-box.active {
+    display: block;
+}
+
+.header .header-2 .flex .user-box p {
+    font-size: 2rem;
+    color: var(--light-color);
+    margin-bottom: 1rem;
+}
+
+.header .header-2 .flex .user-box p span {
+    color: var(--purple);
+}
+
+.header .header-2 .flex .user-box .delete-btn {
+    margin-top: 1rem;
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: translateY(-1rem);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+}
+
+/* Home Section */
+.home {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://placehold.co/1920x700/E0E0E0/333333?text=Bookstore+Hero') no-repeat; /* Placeholder image */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.home .content {
+    max-width: 70rem;
+    text-align: center;
+}
+
+.home .content h3 {
+    font-size: 5rem;
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+.home .content p {
+    font-size: 1.8rem;
+    color: var(--light-white);
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+/* Products Section */
+.products .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.products .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    border: var(--border);
+    position: relative;
+}
+
+.products .box-container .box .image {
+    height: 30rem;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.products .box-container .box .name {
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+
+.products .box-container .box .price {
+    font-size: 2.5rem;
+    color: var(--purple);
+    margin-bottom: 1rem;
+}
+
+.products .box-container .box .qty {
+    width: 6rem;
+    padding: 1rem;
+    border: var(--border);
+    font-size: 1.8rem;
+    color: var(--black);
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+}
+
+/* About Section */
+.about .flex {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.about .flex .image {
+    flex: 1 1 40rem;
+}
+
+.about .flex .image img {
+    width: 100%;
+    border-radius: .5rem;
+}
+
+.about .flex .content {
+    flex: 1 1 40rem;
+}
+
+.about .flex .content h3 {
+    font-size: 3.5rem;
+    color: var(--black);
+    text-transform: uppercase;
+}
+
+.about .flex .content p {
+    padding: 1rem 0;
+    line-height: 2;
+    font-size: 1.7rem;
+    color: var(--light-color);
+}
+
+/* Home Contact Section */
+.home-contact {
+    background-color: var(--black);
+    background: url('https://placehold.co/1920x400/333333/FFFFFF?text=Contact+Us') no-repeat; /* Placeholder image */
+    background-size: cover;
+    background-position: center;
+    padding: 5rem;
+    text-align: center;
+}
+
+.home-contact .content {
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.home-contact .content h3 {
+    font-size: 4rem;
+    color: var(--white);
+    text-transform: uppercase;
+}
+
+.home-contact .content p {
+    padding: 1rem 0;
+    line-height: 2;
+    font-size: 1.7rem;
+    color: var(--light-white);
+}
+
+/* Form Container (for login/register) */
+.form-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: var(--light-bg);
+}
+
+.form-container form {
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    width: 50rem;
+    border: var(--border);
+}
+
+.form-container form h3 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.form-container form .box {
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.7rem;
+    color: var(--black);
+    border: var(--border);
+    margin: 1rem 0;
+    border-radius: .5rem;
+}
+
+.form-container form p {
+    margin-top: 1.5rem;
+    font-size: 1.7rem;
+    color: var(--light-color);
+}
+
+.form-container form p a {
+    color: var(--purple);
+    text-decoration: underline;
+}
+
+/* Shopping Cart Section */
+.shopping-cart .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.shopping-cart .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    border: var(--border);
+    position: relative;
+}
+
+.shopping-cart .box-container .box img {
+    height: 15rem;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.shopping-cart .box-container .box .name {
+    font-size: 2rem;
+    color: var(--black);
+    margin-bottom: 1rem;
+}
+
+.shopping-cart .box-container .box .price {
+    font-size: 2.5rem;
+    color: var(--purple);
+    margin-bottom: 1rem;
+}
+
+.shopping-cart .box-container .box .qty {
+    width: 6rem;
+    padding: 1rem;
+    border: var(--border);
+    font-size: 1.8rem;
+    color: var(--black);
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+}
+
+.shopping-cart .cart-total {
+    max-width: 50rem;
+    margin: 3rem auto;
+    border: var(--border);
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--light-bg);
+    border-radius: .5rem;
+}
+
+.shopping-cart .cart-total p {
+    font-size: 2.5rem;
+    color: var(--light-color);
+    margin-bottom: 1rem;
+}
+
+.shopping-cart .cart-total p span {
+    color: var(--red);
+}
+
+.shopping-cart .cart-total .flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/* Placed Orders Section */
+.placed-orders .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.placed-orders .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    border: var(--border);
+}
+
+.placed-orders .box-container .box p {
+    padding-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--light-color);
+}
+
+.placed-orders .box-container .box p span {
+    color: var(--purple);
+}
+
+/* Contact Section */
+.contact form {
+    padding: 2rem;
+    text-align: center;
+    border: var(--border);
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    width: 50rem;
+    margin: 0 auto;
+}
+
+.contact form h3 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.contact form .box {
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    font-size: 1.7rem;
+    color: var(--black);
+    border: var(--border);
+    margin: 1rem 0;
+    border-radius: .5rem;
+}
+
+.contact form textarea {
+    height: 15rem;
+    resize: none;
+}
+
+/* About Section (Client Reviews) */
+.reviews .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.reviews .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    border: var(--border);
+}
+
+.reviews .box-container .box img {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.reviews .box-container .box p {
+    padding: 1rem 0;
+    line-height: 2;
+    font-size: 1.7rem;
+    color: var(--light-color);
+}
+
+.reviews .box-container .box .stars {
+    font-size: 1.7rem;
+    color: var(--orange);
+}
+
+.reviews .box-container .box h3 {
+    font-size: 2rem;
+    color: var(--black);
+    margin-top: 1rem;
+}
+
+/* Authors Section */
+.authors .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.authors .box-container .box {
+    background-color: var(--white);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    border: var(--border);
+}
+
+.authors .box-container .box img {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.authors .box-container .box .share a {
+    font-size: 2.5rem;
+    color: var(--black);
+    margin: 0 .5rem;
+}
+
+.authors .box-container .box .share a:hover {
+    color: var(--purple);
+}
+
+.authors .box-container .box h3 {
+    font-size: 2rem;
+    color: var(--black);
+    margin-top: 1rem;
+}
+
+/* Footer Section */
+.footer {
+    background-color: var(--light-bg);
+    padding: 3rem 9%;
+}
+
+.footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 3rem;
+    justify-content: center;
+}
+
+.footer .box-container .box h3 {
+    font-size: 2.2rem;
+    color: var(--black);
+    text-transform: capitalize;
+    margin-bottom: 1.5rem;
+}
+
+.footer .box-container .box p,
+.footer .box-container .box a {
+    display: block;
+    font-size: 1.7rem;
+    color: var(--light-color);
+    padding: 1rem 0;
+}
+
+.footer .box-container .box p i,
+.footer .box-container .box a i {
+    color: var(--purple);
+    padding-right: .5rem;
+}
+
+.footer .box-container .box a:hover {
+    color: var(--purple);
+    text-decoration: underline;
+}
+
+.footer .credit {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--light-color);
+    border-top: var(--border);
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+}
+
+.footer .credit span {
+    color: var(--purple);
+}
+
+/* Media Queries (from your original CSS, adapted for Bootstrap breakpoints) */
+@media (max-width:991px) { /* Equivalent to Bootstrap's lg breakpoint */
+    html {
+        font-size: 55%;
+    }
+    .header .header-1,
+    .header .header-2,
+    .footer {
+        padding: 1.5rem 2rem;
+    }
+}
+
+@media (max-width:768px) { /* Equivalent to Bootstrap's md breakpoint */
+    #menu-btn {
+        display: inline-block; /* Show menu button on smaller screens */
+    }
+
+    .header .header-2 .flex .navbar {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        border-top: var(--border);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path .2s linear;
+    }
+
+    .header .header-2 .flex .navbar.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .header .header-2 .flex .navbar a {
+        display: block;
+        margin: 2rem;
+        text-align: center;
+    }
+}
+
+@media (max-width:450px) { /* Equivalent to Bootstrap's sm breakpoint */
+    html {
+        font-size: 50%;
+    }
+    .heading h3 {
+        font-size: 3.5rem;
+    }
+    .title {
+        font-size: 3rem;
+    }
+}
